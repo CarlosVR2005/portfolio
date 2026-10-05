@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="5" y="5" width="56" height="56" rx="14" fill="#16120f"/>
+  <rect x="2" y="2" width="56" height="56" rx="14" fill="#e8471c" stroke="#16120f" stroke-width="4"/>
+  <text x="30" y="41" text-anchor="middle" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="25" fill="#16120f" letter-spacing="-1">CV</text>
+</svg>

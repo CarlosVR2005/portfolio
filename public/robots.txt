@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# TODO: actualiza el dominio si cambias la URL del sitio (astro.config.mjs)
+Sitemap: https://carlosvizcaino.vercel.app/sitemap-index.xml

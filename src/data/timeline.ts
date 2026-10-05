@@ -51,6 +51,7 @@ export const timeline: TimelineItem[] = [
     icon: 'graduation',
   },
   {
+    // TODO: confirmar fecha de fundación de Origen LZT
     when: { es: '2023', en: '2023' },
     title: { es: 'Fundo Origen LZT', en: 'I found Origen LZT' },
     text: {
@@ -80,6 +81,7 @@ export const timeline: TimelineItem[] = [
     icon: 'award',
   },
   {
+    // TODO: confirmar curso en el que fui Scrum Master de SprintPilot
     when: { es: '2026', en: '2026' },
     title: { es: 'Scrum Master de SprintPilot', en: 'Scrum Master of SprintPilot' },
     text: { es: 'Coordino a un equipo de 10 personas en un proyecto de la carrera.', en: 'I coordinate a 10-person team on a university project.' },

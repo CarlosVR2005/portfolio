@@ -21,6 +21,7 @@ export const site = {
     internshipFrom: '2027-02',
     graduation: '2027-06',
   },
+  /** TODO: crea este repositorio en GitHub (o cambia la URL) para el enlace del footer. */
   repo: 'https://github.com/CarlosVR2005/portfolio',
 } as const;
 
