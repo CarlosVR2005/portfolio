@@ -9,7 +9,12 @@ import { z } from 'astro/zod';
  * El cuerpo del Markdown se muestra como "Detalles técnicos" (desplegable).
  */
 const projects = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
+  // id = "es/<slug>" o "en/<slug>" (el mismo slug existe en los dos idiomas)
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/content/projects',
+    generateId: ({ entry }) => entry.replace(/\.md$/, ''),
+  }),
   schema: z.object({
     slug: z.string(),
     lang: z.enum(['es', 'en']),

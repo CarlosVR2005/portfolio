@@ -16,7 +16,7 @@ highlights:
   - Custom websites for businesses on my home island, from idea to launch.
   - Club Nada Más (a swimming club) and a psychology practice in Arrecife, both live.
   - Mobile-first and easy for the client to maintain.
-  - Direct contact with each business: requirements, proposals and changes.
+  - "Direct contact with each business: requirements, proposals and changes."
 problem: >-
   Many small businesses in Lanzarote have no website, or one that doesn't reflect who they are, and rely only on
   social media to be found.

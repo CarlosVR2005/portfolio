@@ -1,0 +1,32 @@
+---
+import type { Lang } from '@/i18n/ui';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import About from '@/components/sections/About.astro';
+import Projects from '@/components/sections/Projects.astro';
+import Timeline from '@/components/sections/Timeline.astro';
+import Skills from '@/components/sections/Skills.astro';
+import Education from '@/components/sections/Education.astro';
+import Contact from '@/components/sections/Contact.astro';
+import Marquee from '@/components/ui/Marquee.astro';
+
+const { lang } = Astro.props as { lang: Lang };
+const strip =
+  lang === 'es'
+    ? ['Ingeniería de Software', 'Scrum Master', 'Bases de datos', 'Emprendedor', 'Nadador', 'Lanzarote → Madrid']
+    : ['Software Engineering', 'Scrum Master', 'Databases', 'Founder', 'Swimmer', 'Lanzarote → Madrid'];
+---
+<BaseLayout lang={lang} home>
+  <Hero lang={lang} />
+  <div class="overflow-hidden py-5">
+    <div class="rotate-[-1.2deg] -mx-[4%]">
+      <Marquee items={strip} />
+    </div>
+  </div>
+  <About lang={lang} />
+  <Projects lang={lang} />
+  <Timeline lang={lang} />
+  <Skills lang={lang} />
+  <Education lang={lang} />
+  <Contact lang={lang} />
+</BaseLayout>

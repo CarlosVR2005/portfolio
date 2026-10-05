@@ -17,7 +17,7 @@ highlights:
   - Webs a medida para negocios de mi isla, desde la idea hasta la publicación.
   - Club Nada Más (club de natación) y una consulta de psicología en Arrecife, ya en producción.
   - Pensadas primero para móvil y fáciles de mantener para el cliente.
-  - Trato directo con cada negocio: requisitos, propuestas y cambios.
+  - "Trato directo con cada negocio: requisitos, propuestas y cambios."
 problem: >-
   Muchos negocios pequeños de Lanzarote no tienen web o tienen una que no refleja lo que son, y dependen solo de las
   redes sociales para que les encuentren.
