@@ -315,6 +315,43 @@ html.js [data-reveal].is-in {
   transition-delay: var(--d, 0ms);
 }
 
+/* Filtros de proyectos */
+.filter-in {
+  animation: filter-in 0.5s var(--ease-snappy) both;
+}
+@keyframes filter-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+/* Menú móvil: los enlaces entran en cascada */
+[data-menu]:not(.hidden) [data-menu-link] {
+  animation: menu-in 0.5s var(--ease-snappy) both;
+}
+[data-menu] li:nth-child(2) [data-menu-link] { animation-delay: 40ms; }
+[data-menu] li:nth-child(3) [data-menu-link] { animation-delay: 80ms; }
+[data-menu] li:nth-child(4) [data-menu-link] { animation-delay: 120ms; }
+[data-menu] li:nth-child(5) [data-menu-link] { animation-delay: 160ms; }
+[data-menu] li:nth-child(6) [data-menu-link] { animation-delay: 200ms; }
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Cambio de tema con revelado circular (View Transitions) */
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html.theme-vt::view-transition-new(root) {
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.js [data-reveal] {
     opacity: 1 !important;
@@ -340,4 +377,10 @@ html.lenis body {
 }
 .lenis.lenis-stopped {
   overflow: hidden;
+}
+
+/* El nombre junto al logo se oculta al hacer scroll para no pisar el contenido */
+.is-scrolled .logo-text {
+  opacity: 0;
+  pointer-events: none;
 }

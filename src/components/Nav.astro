@@ -32,13 +32,14 @@ const altHref = alternatePath(Astro.url.pathname, otherLang);
     <a
       href={homePath}
       class="group flex items-center gap-2 rounded-xl"
-      aria-label={`Carlos Vizcaino · ${t('nav.home')}`}
     >
       <span
         class="brut-sm grid size-11 place-items-center bg-lava font-display text-lg font-extrabold text-on-accent transition-transform duration-300 group-hover:-rotate-6"
         aria-hidden="true">CV</span
       >
-      <span class="hidden font-display text-lg font-bold leading-none sm:block">Carlos<br /><span class="text-sm font-medium text-muted">Vizcaino</span></span>
+      <span class="logo-text hidden font-display text-lg font-bold leading-none transition-opacity duration-300 sm:block">Carlos <br /><span class="text-sm font-medium text-muted">Vizcaino</span></span>
+      <span class="sr-only sm:hidden">Carlos Vizcaino</span>
+      <span class="sr-only">· {t('nav.home')}</span>
     </a>
 
     <nav aria-label={lang === 'es' ? 'Principal' : 'Main'} class="hidden lg:block">
@@ -72,11 +73,11 @@ const altHref = alternatePath(Astro.url.pathname, otherLang);
         hreflang={otherLang}
         lang={otherLang}
         class="icon-btn w-auto px-3 font-mono text-sm font-semibold"
-        aria-label={t('lang.switch')}
+        aria-label={`${otherLang.toUpperCase()} · ${t('lang.switch')}`}
         data-lang-switch={otherLang}
         data-astro-reload
       >
-        <span aria-hidden="true">{otherLang.toUpperCase()}</span>
+        {otherLang.toUpperCase()}
       </a>
       <ThemeToggle lang={lang} />
       <a href={`${base}#${contactAnchor}`} class="btn btn-primary hidden !min-h-11 md:inline-flex">

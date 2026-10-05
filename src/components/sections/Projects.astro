@@ -43,7 +43,7 @@ const counts = Object.fromEntries(
         ))
       }
     </div>
-    <p class="sr-only" aria-live="polite" data-filter-status></p>
+    <p class="sr-only" aria-live="polite" data-filter-status data-label={t('projects.count')}></p>
 
     <ul class="mt-8 grid grid-flow-dense gap-6 md:grid-cols-6" data-project-grid>
       {projects.map((p, i) => <ProjectCard project={p} lang={lang} index={i} />)}

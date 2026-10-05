@@ -35,7 +35,7 @@ const filterCat = p.category === 'academic' ? 'team' : p.category;
         <StatusTag status={p.status} lang={lang} />
         {
           p.privacy === 'private' && (
-            <span class="tag !border-[#16120f] bg-[#16120f] font-semibold text-[#f3e9d6]">
+            <span class="tag !border-[#16120f] bg-[#16120f] font-semibold text-[#f3e9d6] dark:!border-[#f3e9d6] dark:bg-[#2a221d]">
               <Icon name="lock" size={12} />
               {t('projects.private')}
             </span>

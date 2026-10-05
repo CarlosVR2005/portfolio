@@ -94,9 +94,22 @@ const cats: TimelineCategory[] = ['academic', 'business', 'project', 'sport', 'g
   html.js .timeline-progress {
     transform: translateX(-50%) scaleY(var(--progress, 0));
   }
+  .timeline-dot {
+    transition:
+      transform 0.5s var(--ease-out-back),
+      opacity 0.4s ease;
+  }
+  html.js [data-timeline-item]:not(.is-lit) .timeline-dot {
+    transform: scale(0.7);
+    opacity: 0.55;
+  }
   @media (prefers-reduced-motion: reduce) {
     html.js .timeline-progress {
       transform: translateX(-50%) scaleY(1);
+    }
+    html.js [data-timeline-item]:not(.is-lit) .timeline-dot {
+      transform: none;
+      opacity: 1;
     }
   }
 </style>

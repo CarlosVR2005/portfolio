@@ -8,6 +8,9 @@ import Nav from '@/components/Nav.astro';
 import Footer from '@/components/Footer.astro';
 import LangSuggest from '@/components/LangSuggest.astro';
 import Cursor from '@/components/ui/Cursor.astro';
+// Fuentes del primer pantallazo: se precargan para que el titular no cambie de fuente tarde
+import displayFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+import textFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 
 interface Props {
   lang: Lang;
@@ -24,8 +27,10 @@ const pageTitle = title ? `${title} · ${site.shortName}` : t('meta.title');
 const pageDesc = description ?? t('meta.description');
 const siteUrl = Astro.site ?? new URL('https://example.com');
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
-const altEs = new URL(alternatePath(Astro.url.pathname, 'es'), siteUrl).href;
-const altEn = new URL(alternatePath(Astro.url.pathname, 'en'), siteUrl).href;
+// Mismo formato que las URLs del build (con barra final) para que canonical y hreflang coincidan
+const slash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
+const altEs = new URL(slash(alternatePath(Astro.url.pathname, 'es')), siteUrl).href;
+const altEn = new URL(slash(alternatePath(Astro.url.pathname, 'en')), siteUrl).href;
 const og = new URL(ogImage ?? `/og/${lang}.png`, siteUrl).href;
 
 const personLd = {
@@ -49,6 +54,8 @@ const personLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={textFont} as="font" type="font/woff2" crossorigin />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="es" href={altEs} />
     <link rel="alternate" hreflang="en" href={altEn} />
