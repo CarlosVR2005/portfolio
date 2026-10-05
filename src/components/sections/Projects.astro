@@ -1,0 +1,52 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import { getProjects } from '@/lib/projects';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const id = lang === 'es' ? 'proyectos' : 'projects';
+const projects = await getProjects(lang);
+const filters = [
+  { key: 'all', label: t('projects.filter.all') },
+  { key: 'team', label: t('projects.filter.team') },
+  { key: 'entrepreneurship', label: t('projects.filter.entrepreneurship') },
+  { key: 'freelance', label: t('projects.filter.freelance') },
+];
+const counts = Object.fromEntries(
+  filters.map((f) => [
+    f.key,
+    f.key === 'all'
+      ? projects.length
+      : projects.filter((p) => (p.data.category === 'academic' ? 'team' : p.data.category) === f.key).length,
+  ]),
+);
+---
+<section id={id} class="section relative" aria-labelledby={`${id}-title`}>
+  <div class="container-x">
+    <SectionHeading id={`${id}-title`} kicker={t('projects.kicker')} title={t('projects.title')} intro={t('projects.intro')} />
+
+    <div class="mt-10 flex flex-wrap gap-2" role="group" aria-label={t('projects.filter.label')} data-reveal data-filters>
+      {
+        filters.map((f, i) => (
+          <button
+            type="button"
+            class="chip cursor-pointer !px-4 !py-2 transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 aria-pressed:bg-ink aria-pressed:text-bg aria-pressed:shadow-[3px_3px_0_0_var(--lava)]"
+            aria-pressed={i === 0 ? 'true' : 'false'}
+            data-filter={f.key}
+          >
+            {f.label}
+            <span class="font-mono text-xs opacity-70">{counts[f.key]}</span>
+          </button>
+        ))
+      }
+    </div>
+    <p class="sr-only" aria-live="polite" data-filter-status></p>
+
+    <ul class="mt-8 grid grid-flow-dense gap-6 md:grid-cols-6" data-project-grid>
+      {projects.map((p, i) => <ProjectCard project={p} lang={lang} index={i} />)}
+    </ul>
+  </div>
+</section>

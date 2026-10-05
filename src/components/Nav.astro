@@ -1,0 +1,134 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations, alternatePath, langPrefix } from '@/i18n/utils';
+import Icon from '@/components/ui/Icon.astro';
+import ThemeToggle from '@/components/ui/ThemeToggle.astro';
+
+interface Props {
+  lang: Lang;
+  home?: boolean;
+}
+const { lang, home = false } = Astro.props;
+const t = useTranslations(lang);
+const homePath = langPrefix(lang) || '/';
+const base = home ? '' : homePath === '/' ? '/' : `${homePath}/`;
+
+const links = [
+  { id: 'sobre-mi', en: 'about', label: t('nav.about') },
+  { id: 'proyectos', en: 'projects', label: t('nav.projects') },
+  { id: 'trayectoria', en: 'journey', label: t('nav.timeline') },
+  { id: 'habilidades', en: 'skills', label: t('nav.skills') },
+  { id: 'formacion', en: 'education', label: t('nav.education') },
+].map((l) => ({ ...l, anchor: lang === 'es' ? l.id : l.en }));
+const contactAnchor = lang === 'es' ? 'contacto' : 'contact';
+const otherLang: Lang = lang === 'es' ? 'en' : 'es';
+const altHref = alternatePath(Astro.url.pathname, otherLang);
+---
+<header
+  class="fixed inset-x-0 top-0 z-50 pt-3 transition-transform duration-300"
+  data-nav
+>
+  <div class="container-x flex items-center justify-between gap-3">
+    <a
+      href={homePath}
+      class="group flex items-center gap-2 rounded-xl"
+      aria-label={`Carlos Vizcaino · ${t('nav.home')}`}
+    >
+      <span
+        class="brut-sm grid size-11 place-items-center bg-lava font-display text-lg font-extrabold text-on-accent transition-transform duration-300 group-hover:-rotate-6"
+        aria-hidden="true">CV</span
+      >
+      <span class="hidden font-display text-lg font-bold leading-none sm:block">Carlos<br /><span class="text-sm font-medium text-muted">Vizcaino</span></span>
+    </a>
+
+    <nav aria-label={lang === 'es' ? 'Principal' : 'Main'} class="hidden lg:block">
+      <ul
+        class="brut-sm relative flex items-center gap-1 bg-surface p-1 text-[0.9375rem] font-medium"
+        data-nav-list
+      >
+        <span
+          class="pointer-events-none absolute top-1 left-0 h-[calc(100%-0.5rem)] rounded-lg bg-sulfur opacity-0 transition-[transform,width,opacity] duration-300 ease-[var(--ease-snappy)]"
+          data-nav-indicator
+          aria-hidden="true"></span>
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={`${base}#${l.anchor}`}
+                data-section-link={l.anchor}
+                class="relative z-10 block rounded-lg px-3.5 py-2 transition-colors hover:text-lava-ink aria-[current=true]:text-[#16120f]"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={altHref}
+        hreflang={otherLang}
+        lang={otherLang}
+        class="icon-btn w-auto px-3 font-mono text-sm font-semibold"
+        aria-label={t('lang.switch')}
+        data-lang-switch={otherLang}
+        data-astro-reload
+      >
+        <span aria-hidden="true">{otherLang.toUpperCase()}</span>
+      </a>
+      <ThemeToggle lang={lang} />
+      <a href={`${base}#${contactAnchor}`} class="btn btn-primary hidden !min-h-11 md:inline-flex">
+        {t('nav.contact')}
+      </a>
+      <button
+        type="button"
+        class="icon-btn lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label={t('nav.menu')}
+        data-menu-open
+      >
+        <Icon name="menu" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-[60] hidden bg-bg lg:hidden"
+    data-menu
+    role="dialog"
+    aria-modal="true"
+    aria-label={t('nav.menu')}
+  >
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="container-x relative flex h-full flex-col pt-3 pb-8">
+      <div class="flex items-center justify-between">
+        <span class="brut-sm grid size-11 place-items-center bg-lava font-display text-lg font-extrabold text-on-accent" aria-hidden="true">CV</span>
+        <button type="button" class="icon-btn" aria-label={t('nav.close')} data-menu-close>
+          <Icon name="x" />
+        </button>
+      </div>
+      <ul class="mt-10 flex flex-col gap-1">
+        {
+          [...links, { anchor: contactAnchor, label: t('nav.contact') }].map((l, i) => (
+            <li>
+              <a
+                href={`${base}#${l.anchor}`}
+                class="flex items-baseline gap-4 py-2 font-display text-[2.6rem] leading-none font-extrabold tracking-tight hover:text-lava-ink"
+                data-menu-link
+              >
+                <span class="font-mono text-sm font-normal text-muted">0{i + 1}</span>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-auto font-mono text-sm text-muted">carlosvirigol@gmail.com</p>
+    </div>
+  </div>
+</header>

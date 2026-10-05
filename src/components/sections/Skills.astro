@@ -1,0 +1,91 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations, pick } from '@/i18n/utils';
+import { skills, softSkills, groupLabels, type SkillLevel, type SkillGroup } from '@/data/skills';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Marquee from '@/components/ui/Marquee.astro';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const id = lang === 'es' ? 'habilidades' : 'skills';
+const levels: { key: SkillLevel; dots: number; bg: string }[] = [
+  { key: 'fluent', dots: 3, bg: 'bg-[#ff6a3d]' },
+  { key: 'regular', dots: 2, bg: 'bg-[#4fc3e0]' },
+  { key: 'learning', dots: 1, bg: 'bg-[#ffc53d]' },
+];
+const groups = Object.keys(groupLabels) as SkillGroup[];
+---
+<section id={id} class="section" aria-labelledby={`${id}-title`}>
+  <div class="container-x">
+    <SectionHeading id={`${id}-title`} kicker={t('skills.kicker')} title={t('skills.title')} intro={t('skills.intro')} />
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {
+        levels.map((lv, i) => {
+          const list = skills.filter((s) => s.level === lv.key);
+          return (
+            <article class="brut flex flex-col overflow-hidden" data-reveal style={`--d:${i * 100}ms`}>
+              <header class={`flex items-center justify-between border-b-2 border-line px-5 py-4 text-[#16120f] ${lv.bg}`}>
+                <h3 class="font-display text-2xl font-extrabold">{t(`skills.level.${lv.key}`)}</h3>
+                <span class="flex gap-1" aria-hidden="true">
+                  {[1, 2, 3].map((d) => (
+                    <span class:list={['size-3 rounded-full border-2 border-[#16120f]', d <= lv.dots ? 'bg-[#16120f]' : 'bg-transparent']} />
+                  ))}
+                </span>
+              </header>
+              <div class="flex-1 space-y-4 p-5">
+                {groups
+                  .filter((g) => list.some((s) => s.group === g))
+                  .map((g) => (
+                    <div>
+                      <p class="font-mono text-xs text-muted">{pick(groupLabels[g], lang)}</p>
+                      <ul class="mt-2 flex flex-wrap gap-2">
+                        {list
+                          .filter((s) => s.group === g)
+                          .map((s) => (
+                            <li class="chip skill-chip">{s.name}</li>
+                          ))}
+                      </ul>
+                    </div>
+                  ))}
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <h3 class="mt-16 font-display text-3xl font-extrabold md:text-4xl" data-reveal>{t('skills.soft')}</h3>
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {
+        softSkills.map((s, i) => (
+          <li class="brut flex flex-col p-5" data-reveal style={`--d:${i * 70}ms`}>
+            <Icon name={s.icon} size={26} class="text-lava-ink" />
+            <p class="mt-3 font-display text-lg leading-tight font-bold">{pick(s.title, lang)}</p>
+            <p class="mt-auto pt-3 text-sm leading-snug text-muted">
+              <span class="sr-only">{t('skills.soft.proof')}: </span>
+              {pick(s.proof, lang)}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="mt-20 -mx-[4%] -rotate-1">
+    <Marquee items={['Java', 'SQL', 'JavaScript', 'Astro', 'Node.js', 'MongoDB', 'Supabase', 'Scrum', 'Git', 'Linux', 'C++', 'Tailwind']} tone="lava" />
+  </div>
+</section>
+
+<style>
+  .skill-chip {
+    transition:
+      transform 0.2s var(--ease-out-back),
+      background-color 0.2s;
+  }
+  .skill-chip:hover {
+    transform: translateY(-2px) rotate(-2deg);
+    background: var(--sulfur);
+    color: #16120f;
+  }
+</style>

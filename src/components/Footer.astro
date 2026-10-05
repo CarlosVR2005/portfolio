@@ -1,0 +1,42 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations, alternatePath } from '@/i18n/utils';
+import { site } from '@/config/site';
+import Icon from '@/components/ui/Icon.astro';
+import ThemeToggle from '@/components/ui/ThemeToggle.astro';
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const year = new Date().getFullYear();
+---
+<footer class="relative border-t-2 border-line bg-surface-2/60">
+  <div class="container-x flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
+    <div>
+      <p class="font-display text-2xl font-extrabold">Carlos Vizcaino Rigol</p>
+      <p class="mt-1 text-sm text-muted">© {year} · {t('footer.made')}</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-3">
+      <a href={`mailto:${site.email}`} class="icon-btn" aria-label="Email"><Icon name="mail" /></a>
+      <a href={site.linkedin} class="icon-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><Icon name="linkedin" /></a>
+      <a href={site.github} class="icon-btn" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><Icon name="github" /></a>
+      <span class="mx-1 h-8 w-0.5 bg-line/30" aria-hidden="true"></span>
+      <a
+        href={alternatePath(Astro.url.pathname, other)}
+        hreflang={other}
+        lang={other}
+        class="icon-btn w-auto gap-2 px-3 text-sm font-semibold"
+        data-lang-switch={other}
+        data-astro-reload
+      >
+        <Icon name="globe" size={18} />
+        {t('lang.switch')}
+      </a>
+      <ThemeToggle lang={lang} />
+      <a href="#main" class="icon-btn" aria-label={t('footer.top')} data-to-top><Icon name="arrowUp" /></a>
+    </div>
+  </div>
+  <div class="container-x flex justify-between gap-4 pb-8 font-mono text-xs text-muted">
+    <span>Astro · Tailwind · Vercel</span>
+    <a class="link" href={site.repo} target="_blank" rel="noopener noreferrer">{t('footer.source')}</a>
+  </div>
+</footer>

@@ -1,0 +1,30 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { alternatePath } from '@/i18n/utils';
+/**
+ * Sugerencia de idioma no intrusiva: si el navegador está en otro idioma y la persona
+ * nunca ha elegido uno, se muestra un aviso pequeño (sin redirigir).
+ */
+const { lang } = Astro.props as { lang: Lang };
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const href = alternatePath(Astro.url.pathname, other);
+const copy =
+  other === 'en'
+    ? { text: 'This site is also available in English.', go: 'Switch to English', stay: 'Keep Spanish' }
+    : { text: 'Esta web también está en español.', go: 'Ver en español', stay: 'Stay in English' };
+---
+<div
+  class="pointer-events-none fixed inset-x-0 bottom-4 z-40 hidden px-4"
+  data-lang-suggest={other}
+  data-current-lang={lang}
+  role="region"
+  aria-label={other === 'en' ? 'Language suggestion' : 'Sugerencia de idioma'}
+>
+  <div lang={other} class="brut pointer-events-auto mx-auto flex max-w-md flex-wrap items-center gap-3 p-3 pl-4 text-sm">
+    <p class="flex-1 font-medium">{copy.text}</p>
+    <div class="flex gap-2">
+      <a href={href} hreflang={other} class="btn btn-primary !min-h-9 !px-3 !py-1.5 text-sm" data-lang-switch={other} data-astro-reload>{copy.go}</a>
+      <button type="button" class="btn btn-ghost !min-h-9 !px-3 !py-1.5 text-sm" data-lang-dismiss>{copy.stay}</button>
+    </div>
+  </div>
+</div>

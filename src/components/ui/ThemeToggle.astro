@@ -1,0 +1,44 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import Icon from './Icon.astro';
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+---
+<button
+  type="button"
+  class="icon-btn theme-toggle relative overflow-hidden"
+  aria-label={t('theme.toggle')}
+  title={t('theme.toggle')}
+  data-theme-toggle
+>
+  <span class="theme-icon theme-sun"><Icon name="sun" /></span>
+  <span class="theme-icon theme-moon"><Icon name="moon" /></span>
+</button>
+
+<style>
+  .theme-icon {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    transition:
+      transform 0.5s var(--ease-out-back),
+      opacity 0.3s ease;
+  }
+  .theme-sun {
+    transform: rotate(0deg) scale(1);
+  }
+  .theme-moon {
+    transform: rotate(-90deg) scale(0.3) translateY(14px);
+    opacity: 0;
+  }
+  :global([data-theme='dark']) .theme-sun {
+    transform: rotate(90deg) scale(0.3) translateY(14px);
+    opacity: 0;
+  }
+  :global([data-theme='dark']) .theme-moon {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+interface Props {
+  status: 'live' | 'wip' | 'done';
+  lang: Lang;
+}
+const { status, lang } = Astro.props;
+const t = useTranslations(lang);
+const styles = {
+  live: 'bg-[#c9efd8]',
+  wip: 'bg-[#ffc53d]',
+  done: 'bg-[#fff8ea]',
+} as const;
+---
+<span class={`tag !border-[#16120f] font-semibold text-[#16120f] ${styles[status]}`}>
+  {status === 'live' && <span class="size-1.5 rounded-full bg-[#1a7a43]" aria-hidden="true" />}
+  {t(`projects.status.${status}`)}
+</span>

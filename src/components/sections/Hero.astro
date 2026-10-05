@@ -1,0 +1,162 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import { site } from '@/config/site';
+import Icon from '@/components/ui/Icon.astro';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const contactAnchor = lang === 'es' ? '#contacto' : '#contact';
+const projectsAnchor = lang === 'es' ? '#proyectos' : '#projects';
+const termLines = [
+  { cmd: t('hero.term.cmd1'), out: t('hero.term.out1') },
+  { cmd: t('hero.term.cmd2'), out: t('hero.term.out2') },
+];
+---
+<section class="relative isolate overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24" aria-labelledby="hero-title">
+  <!-- Fondo interactivo: rejilla de puntos que reacciona al cursor -->
+  <canvas class="absolute inset-0 -z-10 h-full w-full" data-dots aria-hidden="true"></canvas>
+  <div
+    class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-bg"
+    aria-hidden="true">
+  </div>
+
+  <div class="container-x grid items-center gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-10">
+    <div>
+      <p class="hero-in chip !border-ok/60 !bg-surface text-sm" style="--i:0">
+        <span class="relative flex size-2.5" aria-hidden="true">
+          <span class="absolute inline-flex size-full animate-ping rounded-full bg-ok opacity-60"></span>
+          <span class="relative inline-flex size-2.5 rounded-full bg-ok"></span>
+        </span>
+        {t('hero.badge')}
+      </p>
+
+      <h1 id="hero-title" class="mt-6 font-display font-extrabold">
+        <span class="hero-in block text-2xl font-semibold text-muted md:text-3xl" style="--i:1">{t('hero.hello')}</span>
+        <span class="mt-2 block text-[clamp(3.4rem,13vw,8.5rem)] leading-[0.88] tracking-[-0.045em]">
+          <span class="hero-word inline-block" style="--i:2">
+            <span class="relative inline-block -rotate-2 rounded-2xl border-2 border-line bg-lava px-3 pb-1 text-on-accent shadow-[6px_6px_0_0_var(--shadow)]">Carlos</span>
+          </span>
+          <span class="hero-word mt-1 block" style="--i:3">Vizcaino<span class="text-lava">.</span></span>
+        </span>
+      </h1>
+
+      <p class="hero-in mt-6 font-mono text-[0.95rem] text-ocean-ink md:text-base" style="--i:4">
+        &gt; {t('hero.title')}
+      </p>
+      <p class="hero-in mt-3 max-w-xl text-lg text-muted md:text-xl" style="--i:5">
+        {t('hero.tagline')}
+      </p>
+
+      <div class="hero-in mt-8 flex flex-wrap items-center gap-3" style="--i:6">
+        <a href={site.cv[lang]} class="btn btn-primary" download data-magnetic>
+          <Icon name="download" size={18} />
+          {t('hero.cv')}
+        </a>
+        <a href={contactAnchor} class="btn btn-ghost" data-magnetic>
+          {t('hero.contact')}
+          <Icon name="arrowRight" size={18} />
+        </a>
+        <div class="flex gap-2 sm:ml-2">
+          <a href={`mailto:${site.email}`} class="icon-btn" aria-label={`Email: ${site.email}`}><Icon name="mail" /></a>
+          <a href={site.linkedin} class="icon-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><Icon name="linkedin" /></a>
+          <a href={site.github} class="icon-btn" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><Icon name="github" /></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminal -->
+    <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+      <div class="hero-in brut relative overflow-hidden !bg-[#16120f] text-[#f3e9d6] [--shadow:var(--lava)] dark:!bg-[#1e1814]" style="--i:4" data-tilt>
+        <div class="flex items-center gap-2 border-b-2 border-[#f3e9d6]/15 px-4 py-3">
+          <span class="size-3 rounded-full bg-[#e8471c]" aria-hidden="true"></span>
+          <span class="size-3 rounded-full bg-[#ffc53d]" aria-hidden="true"></span>
+          <span class="size-3 rounded-full bg-[#4fc3e0]" aria-hidden="true"></span>
+          <span class="ml-2 font-mono text-xs text-[#f3e9d6]/80">carlos@lanzarote: ~</span>
+        </div>
+        <div class="min-h-[13.5rem] p-5 font-mono text-[0.875rem] leading-7 sm:text-[0.9375rem]">
+          <p class="sr-only">
+            {termLines.map((l) => `$ ${l.cmd}: ${l.out}. `)}
+          </p>
+          <div aria-hidden="true" data-terminal>
+            {
+              termLines.map((l) => (
+                <div data-term-line>
+                  <p>
+                    <span class="text-[#ffc53d]">$</span> <span data-term-cmd>{l.cmd}</span>
+                  </p>
+                  <p class="text-[#7dd6ec]" data-term-out>
+                    {l.out}
+                  </p>
+                </div>
+              ))
+            }
+            <p class="mt-1">
+              <span class="text-[#ffc53d]">$</span> <span class="term-caret inline-block h-[1.1em] w-[0.6em] translate-y-[3px] bg-[#f3e9d6]"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <span
+        class="hero-in sticker absolute -top-5 -right-2 rotate-6 rounded-lg border-2 border-line bg-sulfur px-3 py-1.5 font-mono text-xs font-semibold text-[#16120f] shadow-[3px_3px_0_0_var(--shadow)] sm:-right-5"
+        style="--i:7">✦ {t('hero.sticker')}</span
+      >
+      <span
+        class="hero-in absolute -bottom-6 -left-3 -rotate-3 rounded-lg border-2 border-line bg-[#4fc3e0] px-3 py-1.5 font-mono text-xs font-semibold text-[#16120f] shadow-[3px_3px_0_0_var(--shadow)] sm:-left-6"
+        style="--i:8">UCM · 2023 → 2027</span
+      >
+    </div>
+  </div>
+
+  <div class="container-x mt-16 hidden md:block">
+    <a href={projectsAnchor} class="group inline-flex items-center gap-3 font-mono text-sm text-muted hover:text-ink">
+      <span class="grid size-9 place-items-center rounded-full border-2 border-line transition-transform group-hover:translate-y-1">
+        <Icon name="arrowRight" size={16} class="rotate-90" />
+      </span>
+      {t('hero.scroll')}
+    </a>
+  </div>
+</section>
+
+<style>
+  .term-caret {
+    animation: blink 1.05s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  /* Entrada orquestada (CSS puro: funciona aunque falle el JS) */
+  .hero-in,
+  .hero-word {
+    animation: hero-up 0.9s var(--ease-snappy) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+  }
+  .hero-word {
+    animation-name: hero-word;
+    animation-duration: 1s;
+  }
+  .sticker {
+    animation-name: hero-pop;
+    animation-timing-function: var(--ease-out-back);
+  }
+  @keyframes hero-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+  }
+  @keyframes hero-word {
+    from {
+      opacity: 0;
+      transform: translateY(0.45em) rotate(3deg);
+    }
+  }
+  @keyframes hero-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.4) rotate(-20deg);
+    }
+  }
+</style>

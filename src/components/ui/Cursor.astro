@@ -1,0 +1,37 @@
+---
+/** Cursor personalizado sutil. Solo se activa con puntero fino y sin reduced-motion (ver scripts/cursor.ts). */
+---
+<div class="cursor-dot" data-cursor aria-hidden="true"></div>
+<style>
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -17px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    pointer-events: none;
+    opacity: 0;
+    transition:
+      opacity 0.25s ease,
+      width 0.25s var(--ease-snappy),
+      height 0.25s var(--ease-snappy),
+      margin 0.25s var(--ease-snappy),
+      background-color 0.25s ease;
+    will-change: transform;
+    mix-blend-mode: normal;
+  }
+  :global(html.has-cursor) .cursor-dot {
+    opacity: 1;
+  }
+  :global(html.has-cursor.cursor-hover) .cursor-dot {
+    width: 56px;
+    height: 56px;
+    margin: -28px 0 0 -28px;
+    background: color-mix(in srgb, var(--lava) 22%, transparent);
+    border-color: var(--lava);
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+/** Cinta de texto en bucle. Se detiene con reduced-motion y al pasar el ratón. */
+interface Props {
+  items: string[];
+  tone?: 'lava' | 'ink';
+  reverse?: boolean;
+  label?: string;
+}
+const { items, tone = 'ink', reverse = false, label } = Astro.props;
+const row = [...items, ...items];
+---
+<div
+  class:list={[
+    'marquee relative overflow-hidden border-y-2 border-line py-3',
+    tone === 'lava' ? 'bg-lava text-on-accent' : 'bg-[#16120f] text-[#f3e9d6] dark:bg-surface-2',
+  ]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  <div class:list={['marquee-track flex w-max gap-6 pr-6', reverse && 'reverse']}>
+    {
+      row.map((it) => (
+        <span class="flex items-center gap-6 font-display text-xl font-bold whitespace-nowrap md:text-2xl">
+          {it}
+          <span class={tone === 'lava' ? 'text-[#16120f]' : 'text-[#ffc53d]'} aria-hidden="true">✦</span>
+        </span>
+      ))
+    }
+  </div>
+</div>
+<style>
+  .marquee-track {
+    animation: marquee 38s linear infinite;
+  }
+  .marquee-track.reverse {
+    animation-direction: reverse;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

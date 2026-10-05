@@ -1,0 +1,102 @@
+---
+import type { Lang } from '@/i18n/ui';
+import { useTranslations, pick } from '@/i18n/utils';
+import { timeline, type TimelineCategory } from '@/data/timeline';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const id = lang === 'es' ? 'trayectoria' : 'journey';
+
+const catStyle: Record<TimelineCategory, string> = {
+  academic: 'bg-[#4fc3e0]',
+  sport: 'bg-[#ffc53d]',
+  business: 'bg-[#ff6a3d]',
+  project: 'bg-[#c9efd8]',
+  goal: 'bg-[#fffbf2]',
+};
+const cats: TimelineCategory[] = ['academic', 'business', 'project', 'sport', 'goal'];
+---
+<section id={id} class="section relative overflow-hidden bg-surface-2/50" aria-labelledby={`${id}-title`}>
+  <div class="bg-grid pointer-events-none absolute inset-0 opacity-70" aria-hidden="true"></div>
+  <div class="container-x relative">
+    <SectionHeading id={`${id}-title`} kicker={t('timeline.kicker')} title={t('timeline.title')} intro={t('timeline.intro')} />
+
+    <ul class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm" data-reveal aria-label={lang === 'es' ? 'Leyenda' : 'Legend'}>
+      {
+        cats.map((c) => (
+          <li class="flex items-center gap-2">
+            <span class={`size-3.5 rounded-full border-2 border-line ${catStyle[c]}`} aria-hidden="true" />
+            {t(`timeline.cat.${c}`)}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="relative mt-14" data-timeline>
+      <!-- Línea base y línea de progreso (se dibuja con el scroll) -->
+      <div class="absolute top-0 bottom-0 left-[1.375rem] w-1 -translate-x-1/2 rounded-full bg-line/15 md:left-1/2" aria-hidden="true"></div>
+      <div
+        class="timeline-progress absolute top-0 bottom-0 left-[1.375rem] w-1 origin-top -translate-x-1/2 rounded-full bg-lava md:left-1/2"
+        data-timeline-progress
+        aria-hidden="true">
+      </div>
+
+      <ol class="relative space-y-8 md:space-y-4">
+        {
+          timeline.map((item, i) => {
+            const right = i % 2 === 1;
+            const when = item.when ? pick(item.when, lang) : item.place ? pick(item.place, lang) : '';
+            return (
+              <li class="relative grid grid-cols-[2.75rem_1fr] gap-4 md:grid-cols-[1fr_3.5rem_1fr] md:gap-6" data-timeline-item>
+                <div class:list={['hidden md:block', right ? 'md:col-start-1' : 'md:col-start-3 md:row-start-1']}>
+                  <p class:list={['font-display text-2xl font-extrabold text-muted md:pt-5', right ? 'text-right' : '']} aria-hidden="true">
+                    {when}
+                  </p>
+                </div>
+                <div class="relative z-10 flex justify-center md:col-start-2 md:row-start-1">
+                  <span
+                    class:list={[
+                      'timeline-dot mt-3 grid size-11 place-items-center rounded-full border-2 border-line text-[#16120f] shadow-[3px_3px_0_0_var(--shadow)]',
+                      catStyle[item.category],
+                      item.category === 'goal' && 'border-dashed',
+                    ]}
+                  >
+                    <Icon name={item.icon} size={20} />
+                  </span>
+                </div>
+                <div
+                  class:list={['md:row-start-1', right ? 'md:col-start-3' : 'md:col-start-1']}
+                  data-reveal={right ? undefined : 'left'}
+                >
+                  <article class:list={['brut p-5', item.category === 'goal' && 'border-dashed !shadow-none']}>
+                    <p class="flex flex-wrap items-center gap-2 font-mono text-xs text-muted">
+                      <span class="font-semibold text-ink md:hidden">{when}</span>
+                      <span class="hidden md:inline">{when}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{t(`timeline.cat.${item.category}`)}</span>
+                    </p>
+                    <h3 class="mt-2 font-display text-xl leading-tight font-bold md:text-2xl">{pick(item.title, lang)}</h3>
+                    <p class="mt-2 text-[0.9875rem] leading-snug text-muted">{pick(item.text, lang)}</p>
+                  </article>
+                </div>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  html.js .timeline-progress {
+    transform: translateX(-50%) scaleY(var(--progress, 0));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html.js .timeline-progress {
+      transform: translateX(-50%) scaleY(1);
+    }
+  }
+</style>
