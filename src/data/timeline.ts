@@ -52,12 +52,11 @@ export const timeline: TimelineItem[] = [
     icon: 'shirt',
   },
   {
-    // TODO: añadir fechas de la organización de eventos juveniles
-    place: { es: 'Lanzarote', en: 'Lanzarote' },
+    when: { es: '2024', en: '2024' },
     title: { es: 'Organizo eventos juveniles', en: 'Organising youth events' },
     text: {
-      es: 'Eventos culturales y de ocio para gente joven: equipos, instituciones y negociación.',
-      en: 'Cultural and leisure events for young people: teams, institutions and negotiation.',
+      es: 'Eventos culturales y de ocio para gente joven en Lanzarote: equipos, instituciones y negociación.',
+      en: 'Cultural and leisure events for young people in Lanzarote: teams, institutions and negotiation.',
     },
     category: 'business',
     icon: 'users',
