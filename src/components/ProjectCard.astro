@@ -58,11 +58,17 @@ const filterCat = p.category === 'academic' ? 'team' : p.category;
         {p.stack.slice(0, p.featured ? 6 : 4).map((s) => <li class="tag">{s}</li>)}
       </ul>
 
-      <div class="relative z-[2] mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-5">
-        <span class="inline-flex items-center gap-1.5 font-semibold text-lava-ink transition-transform group-hover:translate-x-1" aria-hidden="true">
+      <!-- La fila queda por encima del enlace que cubre la tarjeta; sus huecos dejan pasar el clic a la tarjeta -->
+      <div class="pointer-events-none relative z-[2] mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-5 [&_a]:pointer-events-auto">
+        <a
+          href={href}
+          tabindex="-1"
+          aria-hidden="true"
+          class="inline-flex items-center gap-1.5 font-semibold text-lava-ink transition-transform group-hover:translate-x-1"
+        >
           {t('projects.more')}
           <Icon name="arrowRight" size={18} />
-        </span>
+        </a>
         {
           p.links.repo && (
             <a href={p.links.repo} target="_blank" rel="noopener noreferrer" class="link inline-flex items-center gap-1 text-sm font-medium">

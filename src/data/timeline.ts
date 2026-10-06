@@ -26,11 +26,12 @@ export const timeline: TimelineItem[] = [
     icon: 'waves',
   },
   {
-    when: { es: '2021 – 2023', en: '2021 – 2023' },
-    title: { es: 'Bachillerato de Ciencias y Tecnología', en: 'High school: Science and Technology' },
-    text: { es: 'IES Costa Teguise, Lanzarote.', en: 'IES Costa Teguise, Lanzarote.' },
+    // TODO: añadir fecha del curso de Google
+    place: { es: 'Google', en: 'Google' },
+    title: { es: 'Fundamentos de Marketing Digital', en: 'Fundamentals of Digital Marketing' },
+    text: { es: 'Curso acreditado por Google, 40 horas.', en: 'Google-accredited course, 40 hours.' },
     category: 'academic',
-    icon: 'book',
+    icon: 'megaphone',
   },
   {
     // TODO: añadir fechas de la organización de eventos juveniles
@@ -44,11 +45,11 @@ export const timeline: TimelineItem[] = [
     icon: 'users',
   },
   {
-    when: { es: 'Sept 2023', en: 'Sept 2023' },
-    title: { es: 'Empiezo Ingeniería de Software', en: 'I start Software Engineering' },
-    text: { es: 'Universidad Complutense de Madrid. Me mudo de la isla a Madrid.', en: 'Universidad Complutense de Madrid. I move from the island to Madrid.' },
+    when: { es: '2021 – 2023', en: '2021 – 2023' },
+    title: { es: 'Bachillerato de Ciencias y Tecnología', en: 'High school: Science and Technology' },
+    text: { es: 'IES Costa Teguise, Lanzarote.', en: 'IES Costa Teguise, Lanzarote.' },
     category: 'academic',
-    icon: 'graduation',
+    icon: 'book',
   },
   {
     // TODO: confirmar fecha de fundación de Origen LZT
@@ -62,12 +63,11 @@ export const timeline: TimelineItem[] = [
     icon: 'shirt',
   },
   {
-    // TODO: añadir fecha del curso de Google
-    place: { es: 'Google', en: 'Google' },
-    title: { es: 'Fundamentos de Marketing Digital', en: 'Fundamentals of Digital Marketing' },
-    text: { es: 'Curso acreditado por Google, 40 horas.', en: 'Google-accredited course, 40 hours.' },
+    when: { es: 'Sept 2023', en: 'Sept 2023' },
+    title: { es: 'Empiezo Ingeniería de Software', en: 'I start Software Engineering' },
+    text: { es: 'Universidad Complutense de Madrid. Me mudo de la isla a Madrid.', en: 'Universidad Complutense de Madrid. I move from the island to Madrid.' },
     category: 'academic',
-    icon: 'megaphone',
+    icon: 'graduation',
   },
   {
     // TODO: añadir cursos en los que obtuve estas notas
