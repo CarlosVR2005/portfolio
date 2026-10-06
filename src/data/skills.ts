@@ -22,13 +22,13 @@ export interface Skill {
 export const skills: Skill[] = [
   { name: 'Java', group: 'lang', level: 'fluent' },
   { name: 'SQL', group: 'lang', level: 'fluent' },
-  { name: 'JavaScript', group: 'lang', level: 'fluent' },
-  { name: 'C++', group: 'lang', level: 'regular' },
+  { name: 'JavaScript', group: 'lang', level: 'regular' },
+  { name: 'C++', group: 'lang', level: 'fluent' },
   { name: 'C', group: 'lang', level: 'regular' },
 
   { name: 'HTML', group: 'web', level: 'fluent' },
   { name: 'CSS', group: 'web', level: 'fluent' },
-  { name: 'Tailwind CSS', group: 'web', level: 'fluent' },
+  { name: 'Tailwind CSS', group: 'web', level: 'regular' },
   { name: 'Astro', group: 'web', level: 'regular' },
   { name: 'Node.js', group: 'web', level: 'regular' },
   { name: 'Express', group: 'web', level: 'regular' },
@@ -37,8 +37,8 @@ export const skills: Skill[] = [
   { name: 'Vite', group: 'web', level: 'learning' },
 
   { name: 'MySQL', group: 'db', level: 'fluent' },
-  { name: 'SQL Developer', group: 'db', level: 'regular' },
-  { name: 'MongoDB', group: 'db', level: 'regular' },
+  { name: 'SQL Developer', group: 'db', level: 'fluent' },
+  { name: 'MongoDB', group: 'db', level: 'fluent' },
   { name: 'Supabase (PostgreSQL)', group: 'db', level: 'regular' },
 
   { name: 'Git / GitHub', group: 'tools', level: 'fluent' },
@@ -47,7 +47,7 @@ export const skills: Skill[] = [
   { name: 'Claude Code', group: 'tools', level: 'fluent' },
   { name: 'Linux', group: 'tools', level: 'regular' },
   { name: 'IBM RSAD', group: 'tools', level: 'regular' },
-  { name: 'Vercel', group: 'tools', level: 'regular' },
+  { name: 'Vercel', group: 'tools', level: 'fluent' },
   { name: 'Stripe', group: 'tools', level: 'regular' },
 
   { name: 'Scrum', group: 'method', level: 'fluent' },
