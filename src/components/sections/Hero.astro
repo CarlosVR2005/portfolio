@@ -7,7 +7,7 @@ import Icon from '@/components/ui/Icon.astro';
 const { lang } = Astro.props as { lang: Lang };
 const t = useTranslations(lang);
 const contactAnchor = lang === 'es' ? '#contacto' : '#contact';
-const projectsAnchor = lang === 'es' ? '#proyectos' : '#projects';
+const aboutAnchor = lang === 'es' ? '#sobre-mi' : '#about';
 const termLines = [
   { cmd: t('hero.term.cmd1'), out: t('hero.term.out1') },
   { cmd: t('hero.term.cmd2'), out: t('hero.term.out2') },
@@ -109,7 +109,7 @@ const termLines = [
   </div>
 
   <div class="container-x mt-16 hidden md:block">
-    <a href={projectsAnchor} class="group inline-flex items-center gap-3 font-mono text-sm text-muted hover:text-ink">
+    <a href={aboutAnchor} class="group inline-flex items-center gap-3 font-mono text-sm text-muted hover:text-ink">
       <span class="grid size-9 place-items-center rounded-full border-2 border-line transition-transform group-hover:translate-y-1">
         <Icon name="arrowRight" size={16} class="rotate-90" />
       </span>
