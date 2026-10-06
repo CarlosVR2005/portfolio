@@ -1,12 +1,10 @@
 ---
 import type { Lang } from '@/i18n/ui';
-import { useTranslations, alternatePath } from '@/i18n/utils';
+import { useTranslations } from '@/i18n/utils';
 import { site } from '@/config/site';
 import Icon from '@/components/ui/Icon.astro';
-import ThemeToggle from '@/components/ui/ThemeToggle.astro';
 const { lang } = Astro.props as { lang: Lang };
 const t = useTranslations(lang);
-const other: Lang = lang === 'es' ? 'en' : 'es';
 const year = new Date().getFullYear();
 ---
 <footer class="relative border-t-2 border-line bg-surface-2/60">
@@ -19,19 +17,6 @@ const year = new Date().getFullYear();
       <a href={`mailto:${site.email}`} class="icon-btn" aria-label="Email"><Icon name="mail" /></a>
       <a href={site.linkedin} class="icon-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><Icon name="linkedin" /></a>
       <a href={site.github} class="icon-btn" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><Icon name="github" /></a>
-      <span class="mx-1 h-8 w-0.5 bg-line/30" aria-hidden="true"></span>
-      <a
-        href={alternatePath(Astro.url.pathname, other)}
-        hreflang={other}
-        lang={other}
-        class="icon-btn w-auto gap-2 px-3 text-sm font-semibold"
-        data-lang-switch={other}
-        data-astro-reload
-      >
-        <Icon name="globe" size={18} />
-        {t('lang.switch')}
-      </a>
-      <ThemeToggle lang={lang} />
       <a href="#main" class="icon-btn" aria-label={t('footer.top')} data-to-top><Icon name="arrowUp" /></a>
     </div>
   </div>
