@@ -34,17 +34,6 @@ export const timeline: TimelineItem[] = [
     icon: 'megaphone',
   },
   {
-    // TODO: añadir fechas de la organización de eventos juveniles
-    place: { es: 'Lanzarote', en: 'Lanzarote' },
-    title: { es: 'Organizo eventos juveniles', en: 'Organising youth events' },
-    text: {
-      es: 'Eventos culturales y de ocio para gente joven: equipos, instituciones y negociación.',
-      en: 'Cultural and leisure events for young people: teams, institutions and negotiation.',
-    },
-    category: 'business',
-    icon: 'users',
-  },
-  {
     when: { es: '2021 – 2023', en: '2021 – 2023' },
     title: { es: 'Bachillerato de Ciencias y Tecnología', en: 'High school: Science and Technology' },
     text: { es: 'IES Costa Teguise, Lanzarote.', en: 'IES Costa Teguise, Lanzarote.' },
@@ -61,6 +50,17 @@ export const timeline: TimelineItem[] = [
     },
     category: 'business',
     icon: 'shirt',
+  },
+  {
+    // TODO: añadir fechas de la organización de eventos juveniles
+    place: { es: 'Lanzarote', en: 'Lanzarote' },
+    title: { es: 'Organizo eventos juveniles', en: 'Organising youth events' },
+    text: {
+      es: 'Eventos culturales y de ocio para gente joven: equipos, instituciones y negociación.',
+      en: 'Cultural and leisure events for young people: teams, institutions and negotiation.',
+    },
+    category: 'business',
+    icon: 'users',
   },
   {
     when: { es: 'Sept 2023', en: 'Sept 2023' },
