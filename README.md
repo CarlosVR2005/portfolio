@@ -116,4 +116,3 @@ Busca `TODO` en el código para verlos en contexto.
 - [ ] **Webs para negocios locales:** confirmar tecnologías usadas y permiso de los clientes para enlazarlas.
 - [ ] **Psicofactur y Músculo Lab:** confirmar permiso del cliente para mostrarlos (`visible`).
 - [ ] **TFG:** decidir si se publica (`visible: true` en `src/content/projects/*/tfg-daos.md`) y confirmar el stack.
-- [ ] **Repositorio del portfolio:** crear `github.com/CarlosVR2005/portfolio` o cambiar `repo` en `src/config/site.ts`.
