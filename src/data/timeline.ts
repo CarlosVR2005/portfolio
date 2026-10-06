@@ -52,6 +52,13 @@ export const timeline: TimelineItem[] = [
     icon: 'shirt',
   },
   {
+    when: { es: 'Sept 2023', en: 'Sept 2023' },
+    title: { es: 'Empiezo Ingeniería de Software', en: 'I start Software Engineering' },
+    text: { es: 'Universidad Complutense de Madrid. Me mudo de la isla a Madrid.', en: 'Universidad Complutense de Madrid. I move from the island to Madrid.' },
+    category: 'academic',
+    icon: 'graduation',
+  },
+  {
     when: { es: '2024', en: '2024' },
     title: { es: 'Organizo eventos juveniles', en: 'Organising youth events' },
     text: {
@@ -60,13 +67,6 @@ export const timeline: TimelineItem[] = [
     },
     category: 'business',
     icon: 'users',
-  },
-  {
-    when: { es: 'Sept 2023', en: 'Sept 2023' },
-    title: { es: 'Empiezo Ingeniería de Software', en: 'I start Software Engineering' },
-    text: { es: 'Universidad Complutense de Madrid. Me mudo de la isla a Madrid.', en: 'Universidad Complutense de Madrid. I move from the island to Madrid.' },
-    category: 'academic',
-    icon: 'graduation',
   },
   {
     // TODO: añadir cursos en los que obtuve estas notas
