@@ -13,8 +13,7 @@ privacy: public
 year: 2026 – 2027
 role: Exploración de datos y análisis de redes
 team: 4 personas
-# TODO: confirmar stack
-stack: [Análisis de datos, Grafos, Ethereum]
+stack: [Python, pandas]
 highlights:
   - Trabajo de fin de grado en equipo, sobre un dataset de unas 85.000 DAOs de Ethereum.
   - Me encargo de la exploración de los datos y del análisis de relaciones de red entre DAOs.

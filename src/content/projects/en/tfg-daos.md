@@ -13,7 +13,7 @@ privacy: public
 year: 2026 – 2027
 role: Data exploration and network analysis
 team: 4 people
-stack: [Data analysis, Graphs, Ethereum]
+stack: [Python, pandas]
 highlights:
   - Team bachelor's thesis on a dataset of around 85,000 Ethereum DAOs.
   - I work on data exploration and on analysing network relationships between DAOs.
