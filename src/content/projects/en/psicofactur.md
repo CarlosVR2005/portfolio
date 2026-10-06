@@ -37,4 +37,3 @@ accent: ocean
 - **Front end:** React + Vite + Tailwind CSS, packaged as a PWA.
 - **Back end:** Supabase (PostgreSQL) and Edge Functions for automated tasks.
 - **Integrations:** Google Calendar, a Veri*Factu invoicing provider and a messaging service for reminders.
-- **Code:** public on GitHub. Every image on this page uses made-up data.
