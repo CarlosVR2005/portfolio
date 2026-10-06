@@ -8,7 +8,7 @@ category: freelance
 featured: false
 visible: true
 status: wip
-privacy: private
+privacy: public
 year: "2026"
 role: Full-stack developer (solo)
 stack: [React, Vite, Tailwind CSS, Supabase, PostgreSQL, Edge Functions, PWA]
@@ -28,7 +28,8 @@ solution:
 result: >-
   The project is still in progress. It is the most complete thing I have built on my own: it makes me think about
   privacy from day one, about real regulations and about a non-technical person who will use it every day.
-links: {}
+links:
+  repo: https://github.com/CarlosVR2005/psicofactur
 mockup: psicofactur
 accent: ocean
 ---
@@ -36,4 +37,4 @@ accent: ocean
 - **Front end:** React + Vite + Tailwind CSS, packaged as a PWA.
 - **Back end:** Supabase (PostgreSQL) and Edge Functions for automated tasks.
 - **Integrations:** Google Calendar, a Veri*Factu invoicing provider and a messaging service for reminders.
-- **Privacy:** private code. Every image on this page uses made-up data.
+- **Code:** public on GitHub. Every image on this page uses made-up data.
