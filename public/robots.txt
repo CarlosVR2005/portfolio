@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# TODO: actualiza el dominio si cambias la URL del sitio (astro.config.mjs)
+# Si cambias el dominio, actualízalo aquí y en astro.config.mjs (SITE_URL)
 Sitemap: https://carlosvizcaino.vercel.app/sitemap-index.xml

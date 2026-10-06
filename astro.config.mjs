@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
-// TODO: cambia esta URL por tu dominio final (o la URL que te dé Vercel).
+// URL de producción. Si conectas un dominio propio, cámbiala aquí y en public/robots.txt.
 const SITE_URL = 'https://carlosvizcaino.vercel.app';
 
 const { PUBLIC_ENABLE_ANALYTICS } = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');

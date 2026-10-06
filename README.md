@@ -107,8 +107,8 @@ Los proyectos con clientes tienen `visible` en su archivo para ocultarlos si el 
 Busca `TODO` en el código para verlos en contexto.
 
 - [ ] **CV:** sustituir `public/cv/Carlos-Vizcaino-CV.pdf` y `-EN.pdf` (ahora son de ejemplo). Sin teléfono ni dirección.
-- [ ] **Clave de Resend** en Vercel (`RESEND_API_KEY`) y prueba real del formulario en producción.
-- [ ] **URL final** en `astro.config.mjs` (`SITE_URL`) y `public/robots.txt`.
+- [x] **Clave de Resend** en Vercel (`RESEND_API_KEY`) y prueba real del formulario en producción.
+- [x] **URL final:** https://carlosvizcaino.vercel.app (ya configurada en `SITE_URL` y `robots.txt`).
 - [ ] **Niveles de habilidades** en `src/data/skills.ts` (asignados por criterio, revísalos).
 - [ ] **Fechas de la trayectoria** (`src/data/timeline.ts`): eventos juveniles, fundación de Origen LZT,
       curso de Google, curso de las matrículas/sobresalientes y curso de SprintPilot.
