@@ -110,8 +110,8 @@ Busca `TODO` en el código para verlos en contexto.
 - [x] **Clave de Resend** en Vercel (`RESEND_API_KEY`) y prueba real del formulario en producción.
 - [x] **URL final:** https://carlosvizcaino.vercel.app (ya configurada en `SITE_URL` y `robots.txt`).
 - [ ] **Niveles de habilidades** en `src/data/skills.ts` (asignados por criterio, revísalos).
-- [ ] **Fechas de la trayectoria** (`src/data/timeline.ts`): eventos juveniles, fundación de Origen LZT,
-      curso de Google, curso de las matrículas/sobresalientes y curso de SprintPilot.
+- [ ] **Fechas de la trayectoria** (`src/data/timeline.ts`): curso de Google, curso de las matrículas/sobresalientes
+      y curso de SprintPilot.
 - [ ] **SprintPilot:** confirmar asignatura/curso en el Markdown y, si quieres, capturas reales.
 - [ ] **Webs para negocios locales:** confirmar tecnologías usadas y permiso de los clientes para enlazarlas.
 - [ ] **Psicofactur y Músculo Lab:** confirmar permiso del cliente para mostrarlos (`visible`).

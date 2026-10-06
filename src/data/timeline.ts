@@ -41,7 +41,6 @@ export const timeline: TimelineItem[] = [
     icon: 'book',
   },
   {
-    // TODO: confirmar fecha de fundación de Origen LZT
     when: { es: '2023', en: '2023' },
     title: { es: 'Fundo Origen LZT', en: 'I found Origen LZT' },
     text: {
