@@ -6,8 +6,8 @@ title: TFG · Red de DAOs de Ethereum
 hook: Qué relaciones hay entre miles de organizaciones autónomas de Ethereum.
 category: academic
 featured: false
-# TODO: confirmar si lo incluyo. Cambia a true para publicarlo.
-visible: false
+wide: true
+visible: true
 status: wip
 privacy: public
 year: 2026 – 2027

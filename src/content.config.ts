@@ -23,6 +23,8 @@ const projects = defineCollection({
     hook: z.string(),
     category: z.enum(['team', 'entrepreneurship', 'freelance', 'academic']),
     featured: z.boolean().default(false),
+    /** true = tarjeta horizontal a todo el ancho (útil para cerrar la rejilla) */
+    wide: z.boolean().default(false),
     /** false = no se publica (ni tarjeta ni página) */
     visible: z.boolean().default(true),
     status: z.enum(['live', 'wip', 'done']),

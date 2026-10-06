@@ -6,7 +6,8 @@ title: Final project · Ethereum DAO network
 hook: How thousands of autonomous organisations on Ethereum relate to each other.
 category: academic
 featured: false
-visible: false
+wide: true
+visible: true
 status: wip
 privacy: public
 year: 2026 – 2027

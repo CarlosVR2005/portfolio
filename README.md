@@ -115,4 +115,4 @@ Busca `TODO` en el código para verlos en contexto.
 - [ ] **SprintPilot:** confirmar asignatura/curso en el Markdown y, si quieres, capturas reales.
 - [ ] **Webs para negocios locales:** confirmar tecnologías usadas y permiso de los clientes para enlazarlas.
 - [ ] **Psicofactur y Músculo Lab:** confirmar permiso del cliente para mostrarlos (`visible`).
-- [ ] **TFG:** decidir si se publica (`visible: true` en `src/content/projects/*/tfg-daos.md`) y confirmar el stack.
+- [ ] **TFG:** confirmar el stack en `src/content/projects/*/tfg-daos.md`.
