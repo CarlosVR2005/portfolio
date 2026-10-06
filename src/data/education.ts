@@ -35,6 +35,10 @@ export const gradeHighlights: { subject: L10n; grade: L10n }[] = [
     subject: { es: 'Sistemas Operativos (Linux)', en: 'Operating Systems (Linux)' },
     grade: { es: 'Sobresaliente', en: 'Outstanding' },
   },
+  {
+    subject: { es: 'Administración de Sistemas y Redes', en: 'Systems and Network Administration' },
+    grade: { es: 'Sobresaliente', en: 'Outstanding' },
+  },
 ];
 
 export const spokenLanguages: { name: L10n; level: L10n }[] = [

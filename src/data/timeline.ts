@@ -73,8 +73,8 @@ export const timeline: TimelineItem[] = [
     place: { es: 'UCM', en: 'UCM' },
     title: { es: 'Matrícula de Honor y Sobresaliente', en: 'Top marks' },
     text: {
-      es: 'Matrícula de Honor en Estructura de Computadores y Sobresaliente en Sistemas Operativos (Linux).',
-      en: 'Honours (top grade) in Computer Structure and Outstanding in Operating Systems (Linux).',
+      es: 'Matrícula de Honor en Estructura de Computadores y Sobresaliente en Sistemas Operativos (Linux) y en Administración de Sistemas y Redes.',
+      en: 'Honours (top grade) in Computer Structure, and Outstanding in Operating Systems (Linux) and in Systems and Network Administration.',
     },
     category: 'academic',
     icon: 'award',
